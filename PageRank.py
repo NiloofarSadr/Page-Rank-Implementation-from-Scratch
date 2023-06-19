@@ -9,9 +9,6 @@ start_time = time.time()
 def Euclidean_Dist(df1, df2, cols):
     return np.linalg.norm(df1[cols].values - df2[cols].values,axis=1)
 
-#path = 'D:\\نظریه ریاضی سیستم ها\\MTS_HW3_Sadrolhefazi_830400072\\'
-#data = pd.read_csv(path+'web-Google.txt',delimiter="\t",header = None)
-
 G= nx.fast_gnp_random_graph(5000,0.5,directed=True)
 nodes_num = G.number_of_nodes()
 #nx.draw(G,with_labels = True)
