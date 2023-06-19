@@ -6,15 +6,10 @@ import scipy.sparse as sp
 import sklearn.metrics.pairwise
 start_time = time.time()
 
-
-
-#path = 'D:\\نظریه ریاضی سیستم ها\\MTS_HW3_Sadrolhefazi_830400072\\'
 data = pd.read_csv('web-Google.txt',delimiter="\t",header = None)
-print('data ro khooond!')
 
 G= nx.DiGraph()
 G.add_edges_from(list(data.itertuples(index=False, name=None)))
-print('G dorost shod!!!!')
 nodes_num = G.number_of_nodes()
 #nx.draw(G,with_labels = True)
 nodes = list(G.nodes())
@@ -37,15 +32,12 @@ for node in nodes:
             mat[n,node] = 1/(nodes_num)
 
 mat = mat.tocsr()
-print('csr')
 r = np.array([1/nodes_num]*nodes_num)
-print('r dorost shod')
 A = alpha*mat 
 B = A
 b = B.nonzero()
 for i in range(len(b[0])):
     B[b[0],b[1]] = 1/nodes_num
-print('A*alpha ham shod')
 A += (1-alpha)*B
 
 Ak = A
